@@ -19,6 +19,8 @@ def helloworld():
         for key, value in dict1.items():
             if val == value:
                 return key
+            if val==key:
+                return key
     langcode=GetKey(lang)
 
     text=text.replace('translate',"")
