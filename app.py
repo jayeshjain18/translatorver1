@@ -15,18 +15,26 @@ def helloworld():
     lang=lang.join(language)
     lang=lang.lower()
     dict1=googletrans.LANGUAGES
-    def GetKey(val):
-        for key, value in dict1.items():
-            if val == value:
-                return key
-            if val==key:
-                return key
-    langcode=GetKey(lang)
+    try:
+        def GetKey(val):
+            for key, value in dict1.items():
+                if val == value:
+                    return key
+                if val==key:
+                    return key
+        langcode=GetKey(lang)
+        text = text.replace('translate', "")
+        text = text.replace('translate ', "")
 
-    text=text.replace('translate',"")
-    text=text.replace('translate ',"")
+        a = translator.translate(text, dest=langcode)
+    except:
 
-    a=translator.translate(text,dest=langcode)
+        err = "Unfortunately! i am not able to Process your Translation 🥺\nPlease Click /helpme to know more 🙏 \n @translateabcd_bot ❤"
+        response1 = {
+            "fulfillmentText": "{}".format(err)
+        }
+        return jsonify(response1)
+
 
     let=str(a)
     a1=let.split(",")[2]
